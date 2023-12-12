@@ -50,6 +50,9 @@ createApp({
                 this.view_image--;
             }
         },
+        click_image(index){
+            this.view_image = index;
+        }
     },
 }).mount('#app')
 
