@@ -3,6 +3,7 @@ const {createApp} = Vue;
 createApp({
     data() {
         return {
+            autoscroll: null,
             view_image: 0,
             slides: [
                 {
@@ -50,8 +51,23 @@ createApp({
                 this.view_image--;
             }
         },
+
         click_image(index){
             this.view_image = index;
+        },
+
+        startScroll(){
+            this.autoscroll = setInterval(() => {
+                this.next_image()
+            }, 3000)
+        },
+        pauseScroll(){
+            clearInterval(this.autoscroll);
+            this.autoscroll = null;
+        },
+        stopScroll(){
+            this.pauseScroll();
+            this.view_image = 0;
         }
     },
 }).mount('#app')
