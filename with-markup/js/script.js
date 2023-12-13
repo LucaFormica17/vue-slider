@@ -57,9 +57,11 @@ createApp({
         },
 
         startScroll(){
-            this.autoscroll = setInterval(() => {
-                this.next_image()
-            }, 3000)
+            if(autoscroll = null){
+                this.autoscroll = setInterval(() => {
+                    this.next_image()
+                }, 3000)
+            }
         },
         pauseScroll(){
             clearInterval(this.autoscroll);
