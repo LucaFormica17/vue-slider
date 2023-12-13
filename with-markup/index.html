@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <div class="slider-wrapper" tabindex="0">
+
+                <div class="item" @mouseover="startScroll" @mouseleave="pauseScroll">
+                    <img :src="`./${slides[view_image].image}`" ::key="index" alt="image" />
+                    <div class="text">
+                        <h3>{{ slides[view_image].title }}</h3>
+                        <p>{{ slides[view_image].text }}</p>
+                    </div>
+                </div>
+
+                <div class="thumbs">
+                    <div class="prev" @click="prev_image"></div>
+                    <div class="next" @click="next_image"></div>
+                    <div>
+                        <img class="thumb" :class="view_image === index ? 'active' : ''" v-for="thumb, index in slides" :src="`./${thumb.image}`" alt="img" @click="click_image(index)"/>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+                <button class="play" @click="startScroll">play</button>
+                <button class="pause" @click="pauseScroll">pause</button>
+                <button class="stop" @click="stopScroll">stop</button>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
